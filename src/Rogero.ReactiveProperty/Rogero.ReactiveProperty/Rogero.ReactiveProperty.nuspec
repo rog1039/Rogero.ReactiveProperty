@@ -7,6 +7,7 @@
     <authors>Paul Rogero</authors>
     <owners>Paul Rogero</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/rog1039/Rogero.ReactiveProperty</projectUrl>
     <description>A library that provides a type that supports both INotifyPropertyChanged and IObservable&lt;T&gt;.</description>
     <copyright>Copyright 2015</copyright>
     <tags>MVVM, INotifyPropertyChanged, Rx, Observable</tags>
