@@ -7,8 +7,8 @@ namespace Rogero.ReactiveProperty
 {
     public class ReactiveProperty<T> : INotifyPropertyChanged, IObservable<T>, IDisposable
     {
-        private T _value;
-        private readonly Subject<T> _valueObservable = new Subject<T>();
+        protected T _value;
+        protected readonly Subject<T> _valueObservable = new Subject<T>();
 
         public ReactiveProperty(T initialValue = default(T))
         {
@@ -39,5 +39,23 @@ namespace Rogero.ReactiveProperty
         
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public class ReactivePropertyStream<T> : ReactiveProperty<T>
+    {
+        private readonly IObservable<T> _stream;
+        private T lastValue = default(T);
+
+        public ReactivePropertyStream(IObservable<T> stream)
+        {
+            _stream = stream;
+            _stream.Subscribe(z =>
+            {
+                lastValue = z;
+                base.Value = z;
+            });
+        }
+
+        public new T Value => lastValue;
     }
 }
