@@ -2,6 +2,15 @@
 using System.ComponentModel;
 using System.Reactive.Subjects;
 using System.Runtime.CompilerServices;
+using Rogero.ReactiveProperty.ReactivePropertyStreamExtensions;
+
+namespace Rogero.ReactiveProperty.ReactivePropertyStreamExtensions
+{
+    public static class ReactivePropertyStreamExtensionMethods
+    {
+        public static ReactivePropertyStream<T> ToReactivePropertyStream<T>(this IObservable<T> stream)=> new ReactivePropertyStream<T>(stream);
+    }
+}
 
 namespace Rogero.ReactiveProperty
 {
