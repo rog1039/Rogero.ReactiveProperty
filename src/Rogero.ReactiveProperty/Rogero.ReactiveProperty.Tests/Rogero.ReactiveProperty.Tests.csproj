@@ -62,6 +62,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rogero.ReactiveProperty\Rogero.ReactiveProperty.csproj">
+      <Project>{37B4C5FF-7EEF-4580-B9B9-3161880BDD90}</Project>
+      <Name>Rogero.ReactiveProperty</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
