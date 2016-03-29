@@ -40,7 +40,7 @@ namespace Rogero.ReactiveProperty
 
         public static implicit operator T(ReactiveProperty<T> reactiveProperty) => reactiveProperty.Value;
 
-        public override string ToString() => Value == null ? string.Empty : Value.ToString();
+        public override string ToString() => Value?.ToString() ?? string.Empty;
 
         public void Dispose() => _valueObservable.Dispose();
 
