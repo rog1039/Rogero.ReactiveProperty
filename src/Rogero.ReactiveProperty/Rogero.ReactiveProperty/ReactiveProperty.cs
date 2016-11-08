@@ -18,7 +18,7 @@ namespace Rogero.ReactiveProperty
     /// INotifyPropertyChanged against the wrapped value for data-binding.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ReactiveProperty<T> : INotifyPropertyChanged, IObservable<T>, IDisposable
+    public class ReactiveProperty<T> : INotifyPropertyChanged, IObservable<T>, IDisposable, IComparable
     {
         private T _value;
         private readonly Subject<T> _valueObservable = new Subject<T>();
@@ -49,6 +49,16 @@ namespace Rogero.ReactiveProperty
         public virtual void Dispose() => _valueObservable.Dispose();
 
         public override string ToString() => Value?.ToString() ?? string.Empty;
+
+        public int CompareTo(object obj)
+        {
+            var comparable = _value as IComparable;
+            if (comparable != null)
+            {
+                return comparable.CompareTo(obj);
+            }
+            throw new InvalidOperationException($"The underlying type {(typeof(T)).FullName} does not implement IComparable so a comparison is not possible.");
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
