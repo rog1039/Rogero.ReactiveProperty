@@ -8,6 +8,7 @@ namespace Rogero.ReactiveProperty.ReactivePropertyStreamExtensions
     public static class ReactivePropertyStreamExtensionMethods
     {
         public static ReactivePropertyStream<T> ToReactivePropertyStream<T>(this IObservable<T> stream)=> new ReactivePropertyStream<T>(stream);
+        
     }
 }
 
