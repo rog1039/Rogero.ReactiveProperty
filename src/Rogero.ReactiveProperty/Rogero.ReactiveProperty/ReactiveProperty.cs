@@ -81,32 +81,23 @@ namespace Rogero.ReactiveProperty
 
         public ReactivePropertyStream(IObservable<T> stream)
         {
-            _streamSubscription = stream.Subscribe(z =>
-            {
-                Value = z;
-                base.Value = z;
-            });
-        }
-
-        public ReactivePropertyStream(ReactiveProperty<T> stream)
-        {
-            _streamSubscription = stream.Subscribe(z =>
-            {
-                Value = z;
-                base.Value = z;
-            });
+            _streamSubscription = stream.Subscribe(SetValue);
         }
 
         public ReactivePropertyStream(ReactiveProperty<T> stream, bool retrieveCurrentValue)
         {
-            _streamSubscription = stream.Subscribe(z =>
-            {
-                Value = z;
-                base.Value = z;
-            });
+            _streamSubscription = stream.Subscribe(SetValue);
 
-            if(retrieveCurrentValue)
-                Value = stream.Value;
+            if (retrieveCurrentValue)
+            {
+                SetValue(stream.Value);
+            }
+        }
+
+        private void SetValue(T z)
+        {
+            Value = z;
+            base.Value = z;
         }
 
         public override void Dispose()
