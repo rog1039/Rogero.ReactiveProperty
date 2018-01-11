@@ -44,7 +44,11 @@ namespace Rogero.ReactiveProperty
 
         public static implicit operator T(ReactiveProperty<T> reactiveProperty) => reactiveProperty.Value;
 
-        public IDisposable Subscribe(IObserver<T> observer) => _valueObservable.Subscribe(observer);
+        public IDisposable Subscribe(IObserver<T> observer)
+        {
+            var subscription = _valueObservable.Subscribe(observer);
+            return subscription;
+        }
 
         public virtual void Dispose() => _valueObservable.Dispose();
 
@@ -82,6 +86,27 @@ namespace Rogero.ReactiveProperty
                 Value = z;
                 base.Value = z;
             });
+        }
+
+        public ReactivePropertyStream(ReactiveProperty<T> stream)
+        {
+            _streamSubscription = stream.Subscribe(z =>
+            {
+                Value = z;
+                base.Value = z;
+            });
+        }
+
+        public ReactivePropertyStream(ReactiveProperty<T> stream, bool retrieveCurrentValue)
+        {
+            _streamSubscription = stream.Subscribe(z =>
+            {
+                Value = z;
+                base.Value = z;
+            });
+
+            if(retrieveCurrentValue)
+                Value = stream.Value;
         }
 
         public override void Dispose()
