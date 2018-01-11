@@ -8,6 +8,7 @@ namespace Rogero.ReactiveProperty.ReactivePropertyStreamExtensions
     public static class ReactivePropertyStreamExtensionMethods
     {
         public static ReactivePropertyStream<T> ToReactivePropertyStream<T>(this IObservable<T> stream)=> new ReactivePropertyStream<T>(stream);
+        public static ReactivePropertyStream<T> ToReactivePropertyStream<T>(this IObservable<T> stream, T currentValue) => new ReactivePropertyStream<T>(stream, currentValue);
 
         public static ReactivePropertyStream<T> ToReactivePropertyStream<T>(this ReactiveProperty<T> stream, bool retrieveCurrentValue)
         {
@@ -87,6 +88,11 @@ namespace Rogero.ReactiveProperty
         public ReactivePropertyStream(IObservable<T> stream)
         {
             _streamSubscription = stream.Subscribe(SetValue);
+        }
+
+        public ReactivePropertyStream(IObservable<T> stream, T startingValue) : this(stream)
+        {
+            SetValue(startingValue);
         }
 
         public ReactivePropertyStream(ReactiveProperty<T> stream, bool retrieveCurrentValue)
