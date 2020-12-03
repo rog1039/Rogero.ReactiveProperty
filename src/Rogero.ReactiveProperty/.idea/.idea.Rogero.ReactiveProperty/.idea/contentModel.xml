@@ -6,6 +6,24 @@
     <e p="C:\Users\paulrogero\AppData\Roaming\JetBrains\Rider2020.3\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\paulrogero\AppData\Roaming\JetBrains\Rider2020.3\extensions" t="IncludeRecursive" />
     <e p="C:\Users\paulrogero\AppData\Roaming\JetBrains\Rider2020.3\scratches" t="IncludeRecursive" />
+    <e p="F:\wg\Rogero.ReactiveProperty\.nuke" t="Include" />
+    <e p="F:\wg\Rogero.ReactiveProperty\build" t="IncludeRecursive">
+      <e p="_build.csproj" t="IncludeRecursive" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="boot" t="Include" />
+      <e p="Build.cs" t="Include" />
+      <e p="config" t="Include" />
+      <e p="Configuration.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="_build.AssemblyInfo.cs" t="Include" />
+          <e p="RefitStubs.g.cs" t="Include" />
+        </e>
+      </e>
+    </e>
+    <e p="F:\wg\Rogero.ReactiveProperty\build.cmd" t="Include" />
+    <e p="F:\wg\Rogero.ReactiveProperty\build.ps1" t="Include" />
+    <e p="F:\wg\Rogero.ReactiveProperty\build.sh" t="Include" />
     <e p="F:\wg\Rogero.ReactiveProperty\src\Rogero.ReactiveProperty" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="Rogero.ReactiveProperty" t="IncludeRecursive">
