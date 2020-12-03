@@ -29,7 +29,7 @@
         </e>
         <e p="ReactiveProperty.cs" t="Include" />
         <e p="Rogero.ReactiveProperty.Netstandard.csproj" t="IncludeRecursive" />
-        <e p="Rogero.ReactiveProperty.nuspec" t="Include" />
+        <e p="Rogero.ReactiveProperty.Netstandard.nuspec" t="Include" />
       </e>
       <e p="Rogero.ReactiveProperty.sln" t="IncludeFlat" />
       <e p="Rogero.ReactiveProperty.Tests" t="IncludeRecursive">
